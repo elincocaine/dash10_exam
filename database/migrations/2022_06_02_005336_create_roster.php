@@ -18,7 +18,7 @@ class CreateRoster extends Migration
             $table->string('team_code',3);
             $table->integer('number');
             $table->string('name',200);
-            $table->string('position',5);
+            $table->string('pos',5);
             $table->string('height',10);
             $table->integer('weight');
             $table->date('dob');

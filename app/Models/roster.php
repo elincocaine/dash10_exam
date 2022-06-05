@@ -12,6 +12,6 @@ class roster extends Model
 
     public function player_total()
     {
-        return $this->hasOne(player_total::class);
+        return $this->hasOne(player_totals::class,'player_id','id');
     }
 }
