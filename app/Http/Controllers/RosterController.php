@@ -7,8 +7,8 @@ use App\Models\Roster as R;
 use Illuminate\Support\Facades\Validator;
 use Exception;
 
-class RosterController extends Controller
-{
+class RosterController extends Controller {
+
     public function ExportByTeam($team){
 
     try {
@@ -23,7 +23,7 @@ class RosterController extends Controller
             return response()
                 ->json([
                         "message" => $e->getMessage()
-                ], 200);
+                ], 500);
 
         }
     }
@@ -41,7 +41,7 @@ class RosterController extends Controller
             return response()
                 ->json([
                     "message" => $e->getMessage()
-                ], 200);
+                ], 500);
 
         }
     }

@@ -11,7 +11,9 @@ class Roster extends Model
     protected $table = 'roster';
     use HasFactory;
 
-    protected $appends = ['age','status'];
+    protected $appends = ['age'];
+    protected $relations = ['player_totals'];
+
     public function player_totals()
     {
         return $this->hasOne('App\Models\Player_totals', 'player_id', 'id');
@@ -22,13 +24,6 @@ class Roster extends Model
         return Carbon::parse($this->dob)->age;
 
     }
-    public function getStatusAttribute(){
-
-        return $this->hasOne('App\Models\Player_totals', 'player_id', 'id');
-
-    }
-
-
 
 
 }
