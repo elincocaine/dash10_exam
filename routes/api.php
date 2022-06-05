@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlayerTotalsController as PT;
+use App\Http\Controllers\RosterController as RC;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +15,12 @@ use App\Http\Controllers\PlayerTotalsController as PT;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::get('/user', function (Request $request) {
-    echo "HELLO";
+Route::group(['prefix' => 'export'], function() {
+    Route::group(['prefix' => 'player-stats'], function(){
+        Route::get('team/{team}', [PT::class, 'export']);
+    });
+    Route::group(['prefix' => 'players'], function(){
+        Route::get('team/{team}', [RC::class, 'ExportByTeam']);
+        Route::get('player/{player}', [RC::class, 'ExportByPlayer']);
+    });
 });
-
-Route::get('/export/{playerOrstats}/{position}/{format}', [PT::class, 'export']);
-
