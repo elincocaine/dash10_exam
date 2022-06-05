@@ -14,10 +14,10 @@ class CreatePlayerTotals extends Migration
     public function up()
     {
         Schema::create('player_totals', function (Blueprint $table) {
-            $table->id();
+            $table->string('player_id',32)->primary();
             $table->integer('age');
             $table->integer('games');
-            $table->integer('game_started');
+            $table->integer('games_started');
             $table->integer('minutes_played');
             $table->integer('field_goals');
             $table->integer('field_goals_attempted');
@@ -35,6 +35,12 @@ class CreatePlayerTotals extends Migration
             $table->integer('turnovers');
             $table->integer('personal_fouls');
             $table->timestamps();
+
+
+
+            $table->foreign('player_id')
+                ->references('id')
+                ->on('roster');
         });
     }
 

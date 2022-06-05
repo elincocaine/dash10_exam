@@ -14,7 +14,7 @@ class CreateRoster extends Migration
     public function up()
     {
         Schema::create('roster', function (Blueprint $table) {
-            $table->id();
+            $table->string('id',32)->primary();
             $table->string('team_code',3);
             $table->integer('number');
             $table->string('name',200);
@@ -23,13 +23,13 @@ class CreateRoster extends Migration
             $table->integer('weight');
             $table->date('dob');
             $table->string('nationality',100);
-            $table->string('years_exp',5); 
-            $table->string('college',45);          
+            $table->string('years_exp',5);
+            $table->string('college',45);
             $table->timestamps();
 
             $table->foreign('team_code')
-            ->references('team')
-            ->on('code');
+            ->references('code')
+            ->on('team');
         });
     }
 
